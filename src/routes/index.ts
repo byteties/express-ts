@@ -1,6 +1,7 @@
 import express,{ Request, Response } from 'express'
 import questionController from '../controller/question'
 import answerController from '../controller/answer'
+import { SUCCESS_STATUS } from '../constants'
 
 const route = express()
 
@@ -13,7 +14,7 @@ route.get('/healthz', (req:Request, res:Response) => {
 })
 
 route.get('/', (req:Request, res:Response)  => {
-    res.status(200).send('hello world');
+    res.status(SUCCESS_STATUS).send('hello world');
 });
 
 export default route
