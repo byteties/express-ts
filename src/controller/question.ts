@@ -11,7 +11,7 @@ const getAll = (req:Request,res:Response) =>{
     } else {
       const convertToString = data.toString()
       const questionList = JSON.parse(convertToString);
-      return res.send(questionList)
+      return res.send(questionList.data)
     }
   })
 }
