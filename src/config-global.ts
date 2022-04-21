@@ -1,25 +1,21 @@
 import dotenv from 'dotenv';
+import { PORT } from './constants'
 
 class ConfigGlobal {
-    private static _instance: ConfigGlobal;
-    public PORT: string
+    private static config: NodeJS.ProcessEnv | undefined;
+    private static port: string | undefined;
 
-    private constructor() { 
-      dotenv.config();
-      const config = process.env
-      this.PORT = config.PORT || ""
-      return {
-        PORT: this.PORT
+
+    private constructor() { }
+
+    static getPort(){
+      if(this.port){
+        return this.port
       }
-    }
-
-    static getInstance() {
-        if (this._instance) {
-            return this._instance;
-        }
-
-        this._instance = new ConfigGlobal();
-        return this._instance;
+      dotenv.config();
+      this.config = process.env
+      this.port = this.config.PORT || PORT
+      return this.port
     }
 }
 

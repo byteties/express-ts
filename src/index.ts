@@ -17,10 +17,8 @@ const appHandlePortFull = (app:Express,port:string):void =>{
   });
 }
 
-const config = ConfigGlobal.getInstance()
-
 const app: Express = express();
-const port = config.PORT;
+const port = ConfigGlobal.getPort()
 
 app.use(route)
 
